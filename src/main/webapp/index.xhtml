@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:body>
+    <h1>Facebook™</h1>
+    <h2>Posts</h2>
+    <table style="border: 1px solid black">
+        <tr>
+            <th style="border: 1px solid black">content</th>
+            <th style="border: 1px solid black">author</th>
+            <th style="border: 1px solid black">likes</th>
+            <th style="border: 1px solid black">dislikes</th>
+            <th style="border: 1px solid black">created at</th>
+            <th style="border: 1px solid black">updated at</th>
+        </tr>
+        <ui:repeat value="#{postBean.posts}" var="post">
+            <tr>
+                <td style="border: 1px solid black">#{post.content}</td>
+                <td style="border: 1px solid black">#{post.author}</td>
+                <td style="border: 1px solid black">#{post.likes}</td>
+                <td style="border: 1px solid black">#{post.dislikes}</td>
+                <td style="border: 1px solid black">#{post.createdAt}</td>
+                <td style="border: 1px solid black">#{post.updatedAt}</td>
+                <td><h:form><h:commandButton value="delete" action="#{postBean.deletePost(post.id)}"/></h:form></td>
+            </tr>
+        </ui:repeat>
+    </table>
+    <h2>Add post</h2>
+    <h:form>
+        content:
+        <h:inputText value="#{postBean.content}"/>
+        author:
+        <h:inputText value="#{postBean.author}"/>
+        <h:commandButton type="submit" action="#{postBean.addPost()}" value="Submit"/>
+    </h:form>
+    <h2>Edit post</h2>
+    <h:form>
+        id:
+        <h:inputText value="#{postBean.content}"/>
+        content:
+        <h:inputText value="#{postBean.content}"/>
+    </h:form>
+</h:body>
+</html>
